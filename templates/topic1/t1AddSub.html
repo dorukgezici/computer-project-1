@@ -15,36 +15,57 @@
 {% block script %}
     <script>
         var game = [{
-            "image":"http://i64.tinypic.com/314a6ux.png",
-            "question": "How Many Stars do you see?",
+            "image":"{{ url_for('static', filename='images/topic1/six2.png') }}",
+            "question": "3+3 = ?",
+            "choices": ["6", "7", "8"],
+            "correct": "A"
+        }, {
+            "image":"{{ url_for('static', filename='images/topic1/ten2.png') }}",
+            "question": "5+5 = ?",
+            "choices": ["9", "10", "12"],
+            "correct": "B"
+        }, {
+            "image":"{{ url_for('static', filename='images/topic1/two2.png') }}",
+            "question": "1+1 = ?",
             "choices": ["1", "2", "3"],
+            "correct": "B"
+        }, {
+            "image":"{{ url_for('static', filename='images/topic1/fourteen2.png') }}",
+            "question": "7+7 = ?",
+            "choices": ["12", "13", "14"],
             "correct": "C"
         }, {
-            "image":"http://i65.tinypic.com/2viqgs8.png",
-            "question": "How Many Oranges do you see?",
-            "choices": ["5", "1", "2"],
-            "correct": "B"
-        }, {
-            "image":"http://i65.tinypic.com/ostx5z.png",
-            "question": "How Many Apples do you see?",
-            "choices": ["3", "6", "7"],
+            "image":"{{ url_for('static', filename='images/topic1/fifteen2.png') }}",
+            "question": "9+6 = ?",
+            "choices": ["15", "17", "19"],
             "correct": "A"
-        }, {
-            "image":"http://i63.tinypic.com/23021d.png",
-            "question": "How Many Pencils do you see?",
-            "choices": ["6", "5", "4"],
-            "correct": "B"
-        }, {
-            "image":"http://i64.tinypic.com/10pq546.jpg",
-            "question": "What is this number?",
-            "choices": ["One", "Eight", "Ten"],
+        },{
+            "image":"{{ url_for('static', filename='images/topic1/three2.png') }}",
+            "question": "5-2 = ?",
+            "choices": ["5", "4", "3"],
+            "correct": "C"
+        },{
+            "image":"{{ url_for('static', filename='images/topic1/nine2.png') }}",
+            "question": "12-3 = ?",
+            "choices": ["8", "9", "10"],
             "correct": "B"
         },{
-            "image":"http://i63.tinypic.com/deb9t1.png",
-            "question": "What comes after this range of numbers?",
-            "choices": ["4", "5", "6"],
-            "correct": "A"
-        }];
+            "image":"{{ url_for('static', filename='images/topic1/zero2.png') }}",
+            "question": "3-3 = ?",
+            "choices": ["1", "3", "0"],
+            "correct": "C"
+        },{
+            "image":"{{ url_for('static', filename='images/topic1/eleven2.png') }}",
+            "question": "12-1 = ?",
+            "choices": ["10", "11", "12"],
+            "correct": "B"
+        },{
+            "image":"{{ url_for('static', filename='images/topic1/thirteen2.png') }}",
+            "question": "15-2 = ?",
+            "choices": ["12", "13", "14"],
+            "correct": "B"
+        }
+        ];
 
         var finalScore = $("finalScore"),
             image=$("image"),
@@ -68,7 +89,7 @@
             askingQuestion = true;
 
         function startGame() {
-            image.innerHTML  ='<img src=' + game[order[curQuestion]].image + '"  width="350" height="300"/><br>'
+            image.innerHTML  ="<img src='" + game[order[curQuestion]].image + "'  width='350' height='300'/><br>"
 
             question.innerHTML = "Question "+(curQuestion + 1) + " of " +game.length+"<br>"+
                 game[order[curQuestion]].question;
@@ -121,7 +142,18 @@
         }
 
         function showResult() {
-            finalScore.innerHTML = "<h2>You answered " + correct + " out of " + game.length + " correctly! </h2>";
+
+            if (correct<game.length/2){
+                finalScore.innerHTML  = "<h2>You answered " + correct + " out of " + game.length + " correctly! </h2>";
+                finalScore.innerHTML += "<img width='550' height='400' src='{{ url_for('static', filename='images/fail.png') }}'>"
+                finalScore.innerHTML +="<a class='button' href='{{ url_for('t1AddSub') }}'>Try Again</a>"
+                finalScore.innerHTML +="<a class='button button2' href='{{ url_for('videoAddSub') }}'>Watch a video</a>"
+            }
+            else{
+                finalScore.innerHTML = "<h2>You answered " + correct + " out of " + game.length + " correctly! </h2>";
+                finalScore.innerHTML += "<img width='650' height='500' src='{{ url_for('static', filename='images/pass.png') }}'>"
+                finalScore.innerHTML +="<a class='button' href='{{ url_for('mainPage') }}'>Go Back</a>"
+            }
         }
         window.onload = function() {startGame();}
         submitButton.addEventListener("click", checkAnswer, false);

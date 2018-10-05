@@ -24,6 +24,8 @@ def mainPage():
     return render_template('mainPage.html')
 
 
+'''
+First Topic'''
 @app.route('/topicOne', methods=['GET', 'POST'])
 def topicOne():
     return render_template('topic1/topicOne.html')
@@ -44,6 +46,15 @@ def videoCount():
     return render_template('topic1/videoCount.html')
 
 
+@app.route('/videoAddSub', methods=['GET', 'POST'])
+def videoAddSub():
+    return render_template('topic1/videoAddSub.html')
+
+
+'''
+Second Topic'''
+
+
 @app.route('/topicTwo', methods=['GET', 'POST'])
 def topicTwo():
     return render_template('topic2/topicTwo.html')
@@ -52,6 +63,10 @@ def topicTwo():
 @app.route('/t2shapes', methods=['GET', 'POST'])
 def t2shapes():
     return render_template('topic2/t2shapes.html')
+
+
+'''
+Third Topic'''
 
 
 @app.route('/topicThree', methods=['GET', 'POST'])
