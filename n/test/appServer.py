@@ -23,14 +23,6 @@ def mainPage():
 def topicOne():
     return render_template('topic_1/topicOne.html')
 
-@app.route('/topicTwo', methods=['GET', 'POST'])
-def topicTwo():
-    return render_template('topic_2/topicTwo.html')
-
-@app.route('/topicThree', methods=['GET', 'POST'])
-def topicThree():
-    return render_template('topic_3/topicThree.html')
-
 @app.route('/t1Count', methods=['GET', 'POST'])
 def t1Count():
     return render_template('topic_1/t1Count.html')
@@ -42,6 +34,20 @@ def t1AddSub():
 @app.route('/videoCount', methods=['GET', 'POST'])
 def videoCount():
     return render_template('topic_1/videoCount.html')
+
+@app.route('/topicTwo', methods=['GET', 'POST'])
+def topicTwo():
+    return render_template('topic_2/topicTwo.html')
+
+@app.route('/t2shapes', methods=['GET', 'POST'])
+def t2shapes():
+    return render_template('topic_2/t2shapes.html')
+
+@app.route('/topicThree', methods=['GET', 'POST'])
+def topicThree():
+    return render_template('topic_3/topicThree.html')
+
+
 
 if __name__ == '__main__':
     app.secret_key = 'secret key'

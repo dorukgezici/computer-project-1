@@ -12,63 +12,41 @@
         <div id="choices"></div>
         <button id="submitButton"></button>
         <h3 id=answer></h3>
-        <a href="{{ url_for('topicOne') }}">Go Back!</a>
       </div>
     </div>
 
 <script>
 var game = [{
-  "image":"{{ url_for('static', filename='images/topic1/six.png') }}",
+  "image":"http://i64.tinypic.com/314a6ux.png",
   "question": "How Many Stars do you see?",
-  "choices": ["10", "6", "3"],
-  "correct": "B"
-}, {
-  "image":"{{ url_for('static', filename='images/topic1/one.png') }}",
-  "question": "How Many Oranges do you see?",
   "choices": ["1", "2", "3"],
-  "correct": "A"
-}, {
-  "image":"{{ url_for('static', filename='images/topic1/three.png') }}",
-  "question": "How Many Apples do you see?",
-  "choices": ["3", "6", "8"],
-  "correct": "A"
-}, {
-  "image":"{{ url_for('static', filename='images/topic1/five.png') }}",
-  "question": "How Many Pencils do you see?",
-  "choices": ["3", "4", "5"],
   "correct": "C"
 }, {
-  "image":"{{ url_for('static', filename='images/topic1/eight.jpg') }}",
+  "image":"http://i65.tinypic.com/2viqgs8.png",
+  "question": "How Many Oranges do you see?",
+  "choices": ["5", "1", "2"],
+  "correct": "B"
+}, {
+  "image":"http://i65.tinypic.com/ostx5z.png",
+  "question": "How Many Apples do you see?",
+  "choices": ["3", "6", "7"],
+  "correct": "A"
+}, {
+  "image":"http://i63.tinypic.com/23021d.png",
+  "question": "How Many Pencils do you see?",
+  "choices": ["6", "5", "4"],
+  "correct": "B"
+}, {
+  "image":"http://i64.tinypic.com/10pq546.jpg",
   "question": "What is this number?",
-  "choices": ["Five", "Eight", "Ten"],
+  "choices": ["One", "Eight", "Ten"],
   "correct": "B"
 },{
-  "image":"{{ url_for('static', filename='images/topic1/four.png') }}",
+  "image":"http://i63.tinypic.com/deb9t1.png",
   "question": "What comes after this range of numbers?",
   "choices": ["4", "5", "6"],
   "correct": "A"
-},{
-	  "image":"{{ url_for('static', filename='images/topic1/sixteen.png') }}",
-	  "question": "Count the Ants?",
-	  "choices": ["12", "14", "16"],
-	  "correct": "C"
-},{
-	  "image":"{{ url_for('static', filename='images/topic1/twelve.png') }}",
-	  "question": "Count the Cars?",
-	  "choices": ["12", "13", "14"],
-	  "correct": "A"
-},{
-	  "image":"{{ url_for('static', filename='images/topic1/eighteen.png') }}",
-	  "question": "Count the Teddy bears?",
-	  "choices": ["14", "16", "18"],
-	  "correct": "C"
-},{
-	  "image":"{{ url_for('static', filename='images/topic1/twenty.png') }}",
-	  "question": "Count the Clovers?",
-	  "choices": ["18", "20", "22"],
-	  "correct": "B"
-}
-	];
+	}];
 
 var finalScore = $("finalScore"),
   image=$("image"),
@@ -92,7 +70,7 @@ var finalScore = $("finalScore"),
   askingQuestion = true;
 
 function startGame() {
-  image.innerHTML  ="<img src='" + game[order[curQuestion]].image + "'  width='350' height='300'/><br>"
+  image.innerHTML  ='<img src=' + game[order[curQuestion]].image + '"  width="350" height="300"/><br>'
 
   question.innerHTML = "Question "+(curQuestion + 1) + " of " +game.length+"<br>"+
 	    game[order[curQuestion]].question;
