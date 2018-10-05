@@ -1,3 +1,5 @@
 /.metadata/
 .idea/
 __pycache__/
+.project
+.settings/

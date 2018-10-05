@@ -152,7 +152,7 @@
             }
             else{
                 finalScore.innerHTML = "<h2>You answered " + correct + " out of " + game.length + " correctly! </h2>";
-                finalScore.innerHTML += "<img width='650' height='500' src='{{ url_for('static', filename='images/pass.png') }}'>"
+                finalScore.innerHTML += "<img width='650' height='500' src='{{ url_for('static', filename='images/pass.png') }}'>";
                 finalScore.innerHTML +="<a class='button' href='{{ url_for('mainPage') }}'>Go Back</a>"
             }
         }

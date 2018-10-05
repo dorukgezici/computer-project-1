@@ -25,7 +25,10 @@ def mainPage():
 
 
 '''
-First Topic'''
+First Topic
+'''
+
+
 @app.route('/topicOne', methods=['GET', 'POST'])
 def topicOne():
     return render_template('topic1/topicOne.html')
@@ -52,7 +55,8 @@ def videoAddSub():
 
 
 '''
-Second Topic'''
+Second Topic
+'''
 
 
 @app.route('/topicTwo', methods=['GET', 'POST'])
@@ -66,7 +70,8 @@ def t2shapes():
 
 
 '''
-Third Topic'''
+Third Topic
+'''
 
 
 @app.route('/topicThree', methods=['GET', 'POST'])
