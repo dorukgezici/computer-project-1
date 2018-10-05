@@ -1,0 +1,16 @@
+body {
+    background-color: #ececf6;
+}
+
+.navbar {
+    margin-bottom: 25px;
+}
+
+.card-img-top {
+    height: 150px;
+    object-fit: cover;
+}
+
+a {
+    color: #1d2124;
+}

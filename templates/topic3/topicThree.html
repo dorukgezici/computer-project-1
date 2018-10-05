@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="card">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a class="button" href="#">BAR GRAPHS</a></li>
+                <li class="list-group-item"><a class="button button2" href="#">PICTURE GRAPHS</a></li>
+            </ul>
+            <div class="card-footer"><a href="{{ url_for('mainPage') }}">Go Back!</a></div>
+        </div>
+    </div>
+{% endblock %}

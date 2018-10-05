@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div id="finalScore">
+            <h3 id="image"></h3>
+            <h3 id="question"></h3>
+            <div id="choices"></div>
+            <button id="submitButton"></button>
+            <h3 id=answer></h3>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        var game = [{
+            "image":"http://i64.tinypic.com/314a6ux.png",
+            "question": "How Many Stars do you see?",
+            "choices": ["1", "2", "3"],
+            "correct": "C"
+        }, {
+            "image":"http://i65.tinypic.com/2viqgs8.png",
+            "question": "How Many Oranges do you see?",
+            "choices": ["5", "1", "2"],
+            "correct": "B"
+        }, {
+            "image":"http://i65.tinypic.com/ostx5z.png",
+            "question": "How Many Apples do you see?",
+            "choices": ["3", "6", "7"],
+            "correct": "A"
+        }, {
+            "image":"http://i63.tinypic.com/23021d.png",
+            "question": "How Many Pencils do you see?",
+            "choices": ["6", "5", "4"],
+            "correct": "B"
+        }, {
+            "image":"http://i64.tinypic.com/10pq546.jpg",
+            "question": "What is this number?",
+            "choices": ["One", "Eight", "Ten"],
+            "correct": "B"
+        },{
+            "image":"http://i63.tinypic.com/deb9t1.png",
+            "question": "What comes after this range of numbers?",
+            "choices": ["4", "5", "6"],
+            "correct": "A"
+        }];
+
+        var finalScore = $("finalScore"),
+            image=$("image"),
+            question = $("question"),
+            choices = $("choices"),
+            submitButton = $("submitButton"),
+            answer = $("answer");;
+
+        function $(ID) { return document.getElementById(ID);}
+
+        var order = [];	// order randomly each time
+        for (var i=0; i<game.length; i++) { order[i] = i; }
+        for (var i=0; i<order.length; i++) {
+            var m = Math.round(Math.random()*order.length);
+            var tmp = order[m];
+            order[m] = order[i];
+            order[i] = tmp;
+        }
+        var curQuestion = 0,
+            correct = 0,
+            askingQuestion = true;
+
+        function startGame() {
+            image.innerHTML  ='<img src=' + game[order[curQuestion]].image + '"  width="350" height="300"/><br>'
+
+            question.innerHTML = "Question "+(curQuestion + 1) + " of " +game.length+"<br>"+
+                game[order[curQuestion]].question;
+
+            var choice = game[order[curQuestion]].choices,
+                choicesHtml = "";
+
+            var choiceA = game[order[curQuestion]].choices[0];
+            var choiceB = game[order[curQuestion]].choices[1];
+            var choiceC = game[order[curQuestion]].choices[2];
+
+            choices.innerHTML  = "<label><input type='radio' name='game" + curQuestion +"' value='A'>" +choiceA+"</label><br>";
+            choices.innerHTML += "<label><input type='radio' name='game"+ curQuestion +"' value='B'> "+choiceB+"</label><br>";
+            choices.innerHTML += "<label><input type='radio' name='game"+ curQuestion +"' value='C'> "+choiceC+"</label><br>";
+
+            if (askingQuestion) {
+                submitButton.textContent = "Answer";
+            }
+        }
+
+        function checkAnswer() {
+
+            if (askingQuestion) {
+                submitButton.textContent = "Go To The Next Question";
+                askingQuestion = false;
+
+                var selected, thisChoice = document.getElementsByName("game" + curQuestion);
+                for (var i = 0; i < thisChoice.length; i++) {
+                    if (thisChoice[i].checked) {
+                        selected = thisChoice[i].value;
+                    }
+                }
+
+                if (selected == game[order[curQuestion]].correct) {
+                    correct++;
+                    answer.innerHTML += "<img src='{{ url_for('static', filename='images/true.png') }}'>"}
+                else {
+                    answer.innerHTML += "<img src='{{ url_for('static', filename='images/false.png') }}'>"}
+            }
+            else {
+                askingQuestion = true;
+                submitButton.textContent = "Answer";
+                if (curQuestion < game.length - 1) {
+                    curQuestion++;
+                    startGame();
+                } else {
+                    showResult();
+                }
+            }
+        }
+
+        function showResult() {
+
+            if (correct<game.length/2){
+                finalScore.innerHTML  = "<h2>You answered " + correct + " out of " + game.length + " correctly! </h2>";
+                finalScore.innerHTML += "<img width='550' height='400' src='{{ url_for('static', filename='images/fail.png') }}'>"
+                finalScore.innerHTML +="<a class='button' href='{{ url_for('t1Count') }}'>Try Again</a>"
+                finalScore.innerHTML +="<a class='button button2' href='{{ url_for('videoCount') }}'>Watch a video</a>"
+            }
+            else{
+                finalScore.innerHTML = "<h2>You answered " + correct + " out of " + game.length + " correctly! </h2>";
+                finalScore.innerHTML += "<img width='650' height='500' src='{{ url_for('static', filename='images/pass.png') }}'>"
+                finalScore.innerHTML +="<a class='button' href='{{ url_for('mainPage') }}'>Go Back</a>"
+            }
+        }
+        window.onload = function() {startGame();}
+        submitButton.addEventListener("click", checkAnswer, false);
+    </script>
+{% endblock %}

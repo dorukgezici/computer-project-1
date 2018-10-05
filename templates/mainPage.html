@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="card-group">
+            <div class="card">
+                <img class="card-img-top" src="{{ url_for("static", filename="images/number-algebra.png") }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{{ url_for('topicOne') }}">NUMBER AND ALGEBRA</a></h5>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="{{ url_for("static", filename="images/Measurement-Geometry.jpg") }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{{ url_for('topicTwo') }}">MEASUREMENT AND GEOMETRY</a></h5>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="{{ url_for("static", filename="images/statistics.jpeg") }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{{ url_for('topicThree') }}">STATISTICS</a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

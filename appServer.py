@@ -10,43 +10,53 @@ from flask.helpers import url_for
 from flask import Blueprint, redirect, render_template, url_for
 from flask import current_app, request
 
+
 def create_app():
     app = Flask(__name__)
     return app
-app =create_app()
+
+
+app = create_app()
+
 
 @app.route('/', methods=['GET', 'POST'])
 def mainPage():
     return render_template('mainPage.html')
 
+
 @app.route('/topicOne', methods=['GET', 'POST'])
 def topicOne():
-    return render_template('topic_1/topicOne.html')
+    return render_template('topic1/topicOne.html')
+
 
 @app.route('/t1Count', methods=['GET', 'POST'])
 def t1Count():
-    return render_template('topic_1/t1Count.html')
+    return render_template('topic1/t1Count.html')
+
 
 @app.route('/t1AddSub', methods=['GET', 'POST'])
 def t1AddSub():
-    return render_template('topic_1/t1AddSub.html')
+    return render_template('topic1/t1AddSub.html')
+
 
 @app.route('/videoCount', methods=['GET', 'POST'])
 def videoCount():
-    return render_template('topic_1/videoCount.html')
+    return render_template('topic1/videoCount.html')
+
 
 @app.route('/topicTwo', methods=['GET', 'POST'])
 def topicTwo():
-    return render_template('topic_2/topicTwo.html')
+    return render_template('topic2/topicTwo.html')
+
 
 @app.route('/t2shapes', methods=['GET', 'POST'])
 def t2shapes():
-    return render_template('topic_2/t2shapes.html')
+    return render_template('topic2/t2shapes.html')
+
 
 @app.route('/topicThree', methods=['GET', 'POST'])
 def topicThree():
-    return render_template('topic_3/topicThree.html')
-
+    return render_template('topic3/topicThree.html')
 
 
 if __name__ == '__main__':

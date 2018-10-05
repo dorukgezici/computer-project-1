@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div id="container">
+        <h1>Learn Numbers up to 100</h1>
+
+        <iframe width="660" height="415" src="https://www.youtube.com/embed/HjHxUOoJi9g" frameborder="0"
+                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+        <a class="button button3" href="{{ url_for('mainPage') }}">Go Back</a>
+        <a class="button" href="{{ url_for('t1Count') }}">Play game again</a>
+
+    </div>
+{% endblock %}
