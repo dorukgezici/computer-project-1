@@ -17,64 +17,64 @@
 {% block script %}
 <script>
 var game = [{
-  "question": "Select the Triangle?",
-  "choices": ["{{ url_for('static', filename='images/topic2/triangle.png') }}",
-	"{{ url_for('static', filename='images/topic2/square.jpg') }}",
-	 	"{{ url_for('static', filename='images/topic2/circle.png') }}"],
+  "question": "Which of these clocks shows the time 12:00?",
+  "choices": ["{{ url_for('static', filename='images/topic2/clock1.png') }}",
+	"{{ url_for('static', filename='images/topic2/clock2.png') }}",
+	 	"{{ url_for('static', filename='images/topic2/clock3.png') }}"],
   "correct": "A"
 }, {
-  "question": "Select the Circle?",
-  "choices": ["{{ url_for('static', filename='images/topic2/triangle.png') }}",
-	  "{{ url_for('static', filename='images/topic2/circle.png') }}",
-	  "{{ url_for('static', filename='images/topic2/rectangle.png') }}"],
+  "question": "Which of these clocks shows the time 9:00?",
+  "choices": ["{{ url_for('static', filename='images/topic2/clock1.png') }}",
+	  "{{ url_for('static', filename='images/topic2/clock4.png') }}",
+	  "{{ url_for('static', filename='images/topic2/clock2.png') }}"],
   "correct": "B"
 }, {
-  "question": "Select the Rectangle?",
-  "choices": ["{{ url_for('static', filename='images/topic2/circle.png') }}",
-	  "{{ url_for('static', filename='images/topic2/rectangle.png') }}",
-			  "{{ url_for('static', filename='images/topic2/square.jpg') }}"],
-  "correct": "B"
-}, {
-  "question": "Select the Square?",
-  "choices": ["{{ url_for('static', filename='images/topic2/triangle.png') }}",
-	  "{{ url_for('static', filename='images/topic2/rectangle.png') }}",
-			  "{{ url_for('static', filename='images/topic2/square.jpg') }}"],
+  "question": "Which of these Digital clocks shows the time 1:30?",
+  "choices": ["{{ url_for('static', filename='images/topic2/digital1.png') }}",
+	  "{{ url_for('static', filename='images/topic2/digital2.png') }}",
+			  "{{ url_for('static', filename='images/topic2/digital3.png') }}"],
   "correct": "C"
 }, {
-  "question": "Which shape has four angles?",
-  "choices": ["{{ url_for('static', filename='images/topic2/triangle2.png') }}",
-	  "{{ url_for('static', filename='images/topic2/circle2.png') }}",
-			  "{{ url_for('static', filename='images/topic2/square2.png') }}"],
+  "question": "Which of these Digital clocks shows the time 2:30?",
+  "choices": ["{{ url_for('static', filename='images/topic2/digital2.png') }}",
+"{{ url_for('static', filename='images/topic2/digital3.png') }}",
+		  "{{ url_for('static', filename='images/topic2/digital4.png') }}"],
+  "correct": "C"
+}, {
+  "question": "Which of these clocks shows the time 12:15?",
+  "choices": ["{{ url_for('static', filename='images/topic2/clock3.png') }}",
+	  "{{ url_for('static', filename='images/topic2/clock1.png') }}",
+	  "{{ url_for('static', filename='images/topic2/clock2.png') }}"],
   "correct": "C"
 },{
-  "question": "Which shape has three angles?",
-  "choices": ["{{ url_for('static', filename='images/topic2/triangle2.png') }}",
-	  "{{ url_for('static', filename='images/topic2/rectangle2.png') }}",
-	  		"{{ url_for('static', filename='images/topic2/circle2.png') }}"],
+  "question": "Which of these Digital clocks shows the time 1:00?",
+  "choices": ["{{ url_for('static', filename='images/topic2/digital1.png') }}",
+	  "{{ url_for('static', filename='images/topic2/digital3.png') }}",
+			  "{{ url_for('static', filename='images/topic2/digital2.png') }}"],
   "correct": "A"
 },{
-	  "question": "Which shape looks like a slice of Pizza?",
-	  "choices": ["{{ url_for('static', filename='images/topic2/triangle2.png') }}",
-		  "{{ url_for('static', filename='images/topic2/circle2.png') }}",
-		  		"{{ url_for('static', filename='images/topic2/rectangle2.png') }}"],
+	  "question": "Which of these Digital clocks shows the time 5:00?",
+	  "choices": ["{{ url_for('static', filename='images/topic2/digital5.png') }}",
+		  "{{ url_for('static', filename='images/topic2/digital6.png') }}",
+		  "{{ url_for('static', filename='images/topic2/digital7.png') }}"],
 	  "correct": "A"
 },{
-	  "question": "Which Cut-side is for a Circle?",
-	  "choices": ["{{ url_for('static', filename='images/topic2/triangle3.png') }}",
-		  "{{ url_for('static', filename='images/topic2/circle3.png') }}",
-		  		"{{ url_for('static', filename='images/topic2/rectangle3.png') }}"],
+	  "question": "Which of these clocks shows the time 11:25?",
+	  "choices": ["{{ url_for('static', filename='images/topic2/clock6.png') }}",
+		  "{{ url_for('static', filename='images/topic2/clock5.png') }}",
+		  "{{ url_for('static', filename='images/topic2/clock4.png') }}"],
 	  "correct": "B"
 },{
-	  "question": "Which Cut-side is for a Triangle?",
-	  "choices": ["{{ url_for('static', filename='images/topic2/circle3.png') }}",
-		  "{{ url_for('static', filename='images/topic2/square3.png') }}",
-		  		"{{ url_for('static', filename='images/topic2/triangle3.png') }}"],
-	  "correct": "C"
+	"question": "Which of these Digital clocks shows the time 7:30?",
+	  "choices": ["{{ url_for('static', filename='images/topic2/digital7.png') }}",
+		  "{{ url_for('static', filename='images/topic2/digital6.png') }}",
+		  "{{ url_for('static', filename='images/topic2/digital5.png') }}"],
+	  "correct": "B"
 },{
-	"question": "Which Cut-side is for a Rectangle?",
-	"choices": ["{{ url_for('static', filename='images/topic2/triangle3.png') }}",
-		  "{{ url_for('static', filename='images/topic2/rectangle3.png') }}",
-		  		"{{ url_for('static', filename='images/topic2/circle3.png') }}"],
+	"question": "Which of these clocks shows the time 8:35?",
+	"choices": ["{{ url_for('static', filename='images/topic2/clock4.png') }}",
+		  "{{ url_for('static', filename='images/topic2/clock6.png') }}",
+		  "{{ url_for('static', filename='images/topic2/clock5.png') }}"],
 	  "correct": "B"
 }
 	];
@@ -156,8 +156,8 @@ function showResult() {
 	if (correct<game.length/2){
   finalScore.innerHTML  = "<h2>You answered " + correct + " out of " + game.length + " correctly! </h2>";
   finalScore.innerHTML += "<img width='650' height='500' src='{{ url_for('static', filename='images/fail2.png') }}'>"
-  finalScore.innerHTML +="<a class='button' href='{{ url_for('t2shapes') }}'>Try Again</a>"
-  finalScore.innerHTML +="<a class='button button2' href='{{ url_for('infoShapes') }}'>Info</a>"
+  finalScore.innerHTML +="<a class='button' href='{{ url_for('t2time') }}'>Try Again</a>"
+  finalScore.innerHTML +="<a class='button button2' href='{{ url_for('infoClock') }}'>Info</a>"
 	}
   else{
   finalScore.innerHTML = "<h2>You answered " + correct + " out of " + game.length + " correctly! </h2>";

@@ -61,14 +61,21 @@ Second Topic
 def topicTwo():
     return render_template('topic2/topicTwo.html')
 
+@app.route('/t2time', methods=['GET', 'POST'])
+def t2time():
+    return render_template('topic2/t2Time.html')
 
 @app.route('/t2shapes', methods=['GET', 'POST'])
 def t2shapes():
-    return render_template('topic2/t2shapes.html')
+    return render_template('topic2/t2Shapes.html')
 
 @app.route('/infoShapes', methods=['GET', 'POST'])
 def infoShapes():
     return render_template('topic2/infoShapes.html')
+
+@app.route('/infoClock', methods=['GET', 'POST'])
+def infoClock():
+    return render_template('topic2/infoClock.html')
 
 '''
 Third Topic
