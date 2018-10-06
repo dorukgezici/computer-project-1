@@ -14,8 +14,6 @@ from flask import current_app, request
 def create_app():
     app = Flask(__name__)
     return app
-
-
 app = create_app()
 
 
@@ -68,6 +66,9 @@ def topicTwo():
 def t2shapes():
     return render_template('topic2/t2shapes.html')
 
+@app.route('/infoShapes', methods=['GET', 'POST'])
+def infoShapes():
+    return render_template('topic2/infoShapes.html')
 
 '''
 Third Topic
@@ -85,7 +86,7 @@ if __name__ == '__main__':
     if VCAP_APP_PORT is not None:
         port, debug = int(VCAP_APP_PORT), False
     else:
-        port, debug = 2000, True
+        port, debug = 3000, True
         app.config['dsn'] = """user='vagrant' password='vagrant'
                                host='localhost' port=5432 dbname='database'"""
 
