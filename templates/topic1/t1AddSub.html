@@ -145,7 +145,7 @@
 
             if (correct<game.length/2){
                 finalScore.innerHTML  = "<h2>You answered " + correct + " out of " + game.length + " correctly! </h2>";
-                finalScore.innerHTML += "<img width='550' height='400' src='{{ url_for('static', filename='images/fail.png') }}'>"
+                finalScore.innerHTML += "<img width='650' height='500' src='{{ url_for('static', filename='images/fail.png') }}'>"
                 finalScore.innerHTML +="<a class='button' href='{{ url_for('t1AddSub') }}'>Try Again</a>"
                 finalScore.innerHTML +="<a class='button button2' href='{{ url_for('videoAddSub') }}'>Watch a video</a>"
             }
