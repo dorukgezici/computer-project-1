@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+{% endblock %}
+    <div class="container">
+      <div id="finalScore">
+        <h3 id="image"></h3>
+        <h3 id="question"></h3><br>
+        <h3 id=answer></h3>
+		<button id="submitButton">Go Next</button>
+      </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+<script>
+var game = [{
+  "image":"{{ url_for('static', filename='images/topic3/Picture1.png') }}",
+  "question": "Number of sold Cars in the Picture Graph?",
+  "correct": "6"
+},{
+  "image":"{{ url_for('static', filename='images/topic3/Picture1.png') }}",
+  "question": "Number of sold Ladybugs in the Picture Graph?",
+  "correct": "4"
+},{
+  "image":"{{ url_for('static', filename='images/topic3/Picture2.png') }}",
+  "question": "What is the greatest value sold of an item?",
+  "correct": "9"
+},{
+	  "image":"{{ url_for('static', filename='images/topic3/Picture2.png') }}",
+	  "question": "What is the least value sold of an item?",
+	  "correct": "2"
+},{
+	  "image":"{{ url_for('static', filename='images/topic3/Picture3.png') }}",
+	  "question": "Number of Pianos in the Picture Graph?",
+	  "correct": "2"
+},{
+	  "image":"{{ url_for('static', filename='images/topic3/Picture3.png') }}",
+	  "question": "Number of Guitars in the Picture Graph?",
+	  "correct": "4"
+},{
+	  "image":"{{ url_for('static', filename='images/topic3/Picture4.png') }}",
+	  "question": "The greatest number of Musical Instruments?",
+	  "correct": "6"
+},{
+	  "image":"{{ url_for('static', filename='images/topic3/Picture4.png') }}",
+	  "question": "The least number of Musical Instruments?",
+	  "correct": "2"
+},{
+	  "image":"{{ url_for('static', filename='images/topic3/Picture5.png') }}",
+	  "question": "Two shapes have equal number of shapes?",
+	  "correct": "4"
+},{
+	  "image":"{{ url_for('static', filename='images/topic3/Picture5.png') }}",
+	  "question": "Number of Triangle shape in the Picture Graph?",
+	  "correct": "7"
+}
+
+	];
+
+var finalScore = $("finalScore"),
+  image=$("image"),
+  question = $("question"),
+  submitButton = $("submitButton"),
+  answer = $("answer");;
+
+  function $(ID) { return document.getElementById(ID);}
+
+  var order = [];	// order randomly each time
+  for (var i=0; i<game.length; i++) { order[i] = i; }
+  for (var i=0; i<order.length; i++) {
+    var m = Math.round(Math.random()*order.length);
+    var tmp = order[m];
+    order[m] = order[i];
+    order[i] = tmp;
+  }
+  var curQuestion = 0,
+  correct = 0,
+  askingQuestion = true;
+
+function startGame() {
+  image.innerHTML    = "<img src='" + game[order[curQuestion]].image + "'  width='500' height='450'/><br>"
+  question.innerHTML = "Answer "+(curQuestion + 1) + " of " +game.length+"<br><br>"+
+  game[order[curQuestion]].question;
+  answer.innerHTML  ="<h1 style='color:red;'>"+game[order[curQuestion]].correct+"</h1>"
+}
+
+function checkAnswer() {
+
+    if (curQuestion < game.length - 1) {
+      curQuestion++;
+      startGame();
+    } else {
+      Finished();
+    }
+}
+
+function Finished() {
+  finalScore.innerHTML = "<h2>All correct answers have been displayed</h2><br>"
+  finalScore.innerHTML += "<a class='button' href='{{ url_for('t3Picture') }}'>Play game again</a>"
+
+
+}
+window.onload = function() {startGame();}
+submitButton.addEventListener("click", checkAnswer, false);
+</script>
+
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+{% endblock %}
+    <div class="container">
+      <div id="finalScore">
+        <h3 id="image"></h3>
+        <h3 id="question"></h3><br>
+        <h3 id=answer></h3>
+		<button id="submitButton">Go Next</button>
+      </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+<script>
+var game = [{
+	  "image":"{{ url_for('static', filename='images/topic3/Bar1.png') }}",
+	  "question": "Number of students who passed Math subject?",
+	  "correct": "5"
+	},{
+	  "image":"{{ url_for('static', filename='images/topic3/Bar1.png') }}",
+	  "question": "Number of students who passed History subject?",
+	  "correct": "2"
+	},{
+	  "image":"{{ url_for('static', filename='images/topic3/Bar2.png') }}",
+	  "question": "Number of students from the highest subject passed?",
+	  "correct": "10"
+	},{
+		  "image":"{{ url_for('static', filename='images/topic3/Bar2.png') }}",
+		  "question": "Number of students from the lowest subject passed?",
+		  "correct": "3"
+	},{
+		  "image":"{{ url_for('static', filename='images/topic3/Bar3.png') }}",
+		  "question": "Number of Oranges sold from Bar Graph?",
+		  "correct": "5"
+	},{
+		  "image":"{{ url_for('static', filename='images/topic3/Bar3.png') }}",
+		  "question": "Number of Apples sold from Bar Graph?",
+		  "correct": "3"
+	},{
+		  "image":"{{ url_for('static', filename='images/topic3/Bar4.png') }}",
+		  "question": "Two Fruits have equal number of sold Fruits, numbrer is?",
+		  "correct": "3"
+	},{
+		  "image":"{{ url_for('static', filename='images/topic3/Bar4.png') }}",
+		  "question": "Total number of all fruits sold?",
+		  "correct": "12"
+	},{
+		  "image":"{{ url_for('static', filename='images/topic3/Bar5.png') }}",
+		  "question": "Number of Dog owners from Bar Graph?",
+		  "correct": "4"
+	},{
+		  "image":"{{ url_for('static', filename='images/topic3/Bar5.png') }}",
+		  "question": "Number of Cat owners from Bar Graph?",
+		  "correct": "9"
+	}
+
+		];
+
+var finalScore = $("finalScore"),
+  image=$("image"),
+  question = $("question"),
+  submitButton = $("submitButton"),
+  answer = $("answer");;
+
+  function $(ID) { return document.getElementById(ID);}
+
+  var order = [];	// order randomly each time
+  for (var i=0; i<game.length; i++) { order[i] = i; }
+  for (var i=0; i<order.length; i++) {
+    var m = Math.round(Math.random()*order.length);
+    var tmp = order[m];
+    order[m] = order[i];
+    order[i] = tmp;
+  }
+  var curQuestion = 0,
+  correct = 0,
+  askingQuestion = true;
+
+function startGame() {
+  image.innerHTML    = "<img src='" + game[order[curQuestion]].image + "'  width='500' height='450'/><br>"
+  question.innerHTML = "Answer "+(curQuestion + 1) + " of " +game.length+"<br><br>"+
+  game[order[curQuestion]].question;
+  answer.innerHTML  ="<h1 style='color:red;'>"+game[order[curQuestion]].correct+"</h1>"
+}
+
+function checkAnswer() {
+
+    if (curQuestion < game.length - 1) {
+      curQuestion++;
+      startGame();
+    } else {
+      Finished();
+    }
+}
+
+function Finished() {
+  finalScore.innerHTML = "<h2>All correct answers have been displayed</h2><br>"
+  finalScore.innerHTML += "<a class='button' href='{{ url_for('t3Bar') }}'>Play game again</a>"
+
+
+}
+window.onload = function() {startGame();}
+submitButton.addEventListener("click", checkAnswer, false);
+</script>
+
+{% endblock %}
